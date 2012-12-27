@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div id="bioleft"><p>
+  <b>Name:</b>
+  <%= @zombie.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @zombie.email %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @zombie.bio %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @zombie.age %>
+</p>
+
+<p>
+  <b>Rotting status:</b>
+  <%= @zombie.rotting %>  
+</p>
+
+<p>
+  <b>Roles:</b>
+  <%= @role_names.to_sentence %>
+</p>
+
+<%= link_to 'Edit', edit_zombie_path(@zombie) %> |
+<%= link_to 'Back', zombies_path %>
+</div>
+
+<div id="tweetsright">
+  <% @tweets.each do |tweet| %>
+  <p>
+    <%= link_to tweet.status, [@zombie, tweet] %>
+  </p>
+  <% end %>
+  <% if @tweets.empty? %>
+  <em>No Tweets</em>
+  <% end %>
+</div>
+

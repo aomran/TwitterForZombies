@@ -1,0 +1,7 @@
+<% if @zombie.new_record? %>
+  $('input#zombie_name').effect('highlight', { color: 'red' });
+  $('input#zombie_age').effect('highlight', { color: 'red' });
+<% else %>
+  $('table#zombies').append("<%= escape_javascript(render @zombie) %>");
+  $('tr#<%= dom_id(@zombie) %>').effect('highlight');
+<% end %>

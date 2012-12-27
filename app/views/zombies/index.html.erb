@@ -1,0 +1,40 @@
+<h1>Listing zombies</h1>
+
+<table id="zombies">
+  <tr>
+    <th>Name</th>
+    <th>flavor</th>
+    <th>Bio</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Number of Tweets</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <%= render @zombies %>
+</table>
+
+<h1>Add a new Zombie</h1>
+<%= form_for(Zombie.new, remote: true) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

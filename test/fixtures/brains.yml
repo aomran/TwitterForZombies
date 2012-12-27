@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  zombie_id: MyString
+  integer: MyString
+  status: MyString
+  flavor: MyString
+
+two:
+  zombie_id: MyString
+  integer: MyString
+  status: MyString
+  flavor: MyString

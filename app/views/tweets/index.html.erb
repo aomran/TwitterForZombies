@@ -1,0 +1,28 @@
+<h1><%= @zombie.name.titleize%>'s tweets</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.status %></td>
+    <td><%= time_ago_in_words tweet.created_at %> age</td>
+    <td><%= link_to 'Show', [@zombie, tweet] %></td>
+    <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet) %></td>
+    <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<% if @tweets.empty? %>
+  <em>No tweets found</em>
+<% end %>
+<br />
+<%= link_to 'Back', zombies_path %>
+<%= link_to 'New Tweet', new_zombie_tweet_path %>

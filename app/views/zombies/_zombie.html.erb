@@ -1,0 +1,11 @@
+  <tr id='zombie_<%= zombie.id %>' class="zombie">
+    <td><%= zombie.name %></td>
+    <td><%= zombie.brain.flavor if zombie.brain %></td>
+    <td><%= zombie.bio %></td>
+    <td><%= zombie.age %></td>
+    <td><%= zombie.email %></td>
+    <td><%= link_to pluralize(zombie.tweets.count, 'tweet'), zombie_tweets_path(zombie) %></td>
+    <td><%= link_to 'Show', zombie %></td>
+    <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
+    <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>
+  </tr>

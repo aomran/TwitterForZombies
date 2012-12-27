@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  zombie_id: 
+  weapon: MyString
+  damage: 1
+
+two:
+  zombie_id: 
+  weapon: MyString
+  damage: 1
