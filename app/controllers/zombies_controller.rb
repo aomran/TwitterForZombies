@@ -1,5 +1,5 @@
 class ZombiesController < ApplicationController
-  before_filter :get_zombie, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_zombie, :only => [:show, :edit, :update, :destroy, :decomp, :custom_decomp]
 
   def get_zombie
     @zombie = Zombie.find(params[:id])
@@ -16,7 +16,24 @@ class ZombiesController < ApplicationController
       format.json { render json: @zombies }
     end
   end
+  
+  def decomp
+    if @zombie.decomp == "Dead (again)"
+      render json: @zombie.to_json(only: :decomp), status: :unprocessable_entity
+    else
+      render json: @zombie.to_json(only: :decomp), status: :ok
+    end
+  end
 
+  def custom_decomp
+    @zombie.decomp = params[:zombie][:decomp] 
+    @zombie.save
+
+    respond_to do |format|
+      format.js
+      format.json {render json: @zombie.to_json(only: :decomp) }
+    end
+  end
   # GET /zombies/1
   # GET /zombies/1.json
   def show

@@ -6,7 +6,7 @@ class Zombie < ActiveRecord::Base
   
   validates :age, :numericality => { :only_integer => true }
   validates :name, :presence => true
-  attr_accessible :age, :bio, :name, :email
+  attr_accessible :age, :bio, :name, :email, :decomp
 
   scope :rotting, where(rotting: true)
   scope :fresh, where("age < 20")
