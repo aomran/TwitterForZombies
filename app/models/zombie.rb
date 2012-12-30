@@ -30,4 +30,6 @@ class Zombie < ActiveRecord::Base
   def email_change_notification
     ZombieMailer.email_change(self).deliver
   end
+
+  
 end
