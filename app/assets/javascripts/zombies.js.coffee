@@ -17,3 +17,12 @@ $(document).ready ->
 		  success: (json) ->
 		  	$('#decomp').text(json.decomp).effect('highlight')
 		  	$("div#custom_phase2").fadeOut() if json.decomp == "Dead (again)"
+	
+	$("a.indexaddzombie").click (event) ->
+  		event.preventDefault()
+  		$("div#addzombie").fadeToggle('fast')
+
+  	$('tr.zombie').bind( 'click', ->
+  		window.location = $(this).find('a').attr('href')
+	).hover ->
+		$(this).toggleClass 'hover'

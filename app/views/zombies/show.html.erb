@@ -1,66 +1,63 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %></p>
+<div class="row">
+  <div class="span6">
+    <h2>Zombie Profile</h2>
+    <p> <b>Name:</b>
+      <%= @zombie.name %></p>
 
-<div id="bioleft"><p>
-  <b>Name:</b>
-  <%= @zombie.name %>
-</p>
+    <p> <b>Email:</b>
+      <%= @zombie.email %></p>
 
-<p>
-  <b>Email:</b>
-  <%= @zombie.email %>
-</p>
+    <p>
+      <b>Bio:</b>
+      <%= @zombie.bio %></p>
 
-<p>
-  <b>Bio:</b>
-  <%= @zombie.bio %>
-</p>
+    <p>
+      <b>Age:</b>
+      <%= @zombie.age %></p>
 
-<p>
-  <b>Age:</b>
-  <%= @zombie.age %>
-</p>
+    <p>
+      <b>Rotting status:</b>
+      <%= @zombie.rotting %></p>
 
-<p>
-  <b>Rotting status:</b>
-  <%= @zombie.rotting %>  
-</p>
-
-<p>
-  <b>Decomposition status:</b>
-  <span id="decomp"><%= @zombie.decomp %></span>
-  <div id="custom_phase">
-    <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie), remote: true do |f| %>
-      <strong>Custom Phase</strong>
+    <p>
+      <b>Decomposition status:</b>
+      <span id="decomp">
+        <%= @zombie.decomp %></span>
+      <!--<div id="custom_phase">
+      <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie), remote: true do |f| %> <strong>Custom Phase</strong>
       <%= f.text_field :decomp %>
       <%= f.submit "Set" %>
-    <% end %>
-  </div>
-  <div id="custom_phase2">
-    <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie), remote: true do |f| %>
-      <strong>Custom Phase via JSON</strong>
+      <% end %></div>
+    -->
+    <div id="custom_phase2">
+      <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie), remote: true, :html =>
+      { :class => 'form-inline' } do |f| %> <strong>Set Decomposition via JSON!</strong>
       <%= f.text_field :decomp %>
-      <%= f.submit "Set" %>
-    <% end %>
-  </div>
-</p>
+      <%= f.submit "Set", :class =>
+      'btn'%>
+      <% end %></div>
+  </p>
 
-<p>
-  <b>Roles:</b>
-  <%= @role_names.to_sentence %>
-</p>
+  <p>
+    <b>Roles:</b>
+    <%= @role_names.to_sentence %></p>
 
-<%= link_to 'Edit', edit_zombie_path(@zombie) %> |
-<%= link_to 'Back', zombies_path %>
-</div>
+  <%= link_to 'Edit', edit_zombie_path(@zombie) %>
+  |
+  <%= link_to 'Back', zombies_path %></div>
 
-<div id="tweetsright">
+<div class="span6">
+  <h2>Tweets</h2>
   <% @tweets.each do |tweet| %>
   <p>
-    <%= link_to tweet.status, [@zombie, tweet] %>
-  </p>
+    <%= link_to tweet.status, [@zombie, tweet] %></p>
   <% end %>
-  <% if @tweets.empty? %>
-  <em>No Tweets</em>
-  <% end %>
-</div>
+  <% if @tweets.empty? %> <em>No Tweets</em> <br> <%= link_to "Add a Tweet!", new_zombie_tweet_path(@zombie) %>
+  <% else %>
+  <p>
+    <%= link_to 'View all ' + pluralize(@tweets.count, 'tweet'), zombie_tweets_path(@zombie) %></p>
+  <% end %></div>
 
+</div>

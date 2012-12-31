@@ -6,17 +6,18 @@
     <th>Brain Flavor</th>
     <th>Bio</th>
     <th>Age</th>
-    <th>Email</th>
+    <th><i class="icon-envelope"></i> Email</th>
     <th>Number of Tweets</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
   <%= render @zombies %></table>
 
-<h1>Add a new Zombie</h1>
+<%= link_to 'Add a new Zombie', new_zombie_path, :class => "btn btn-primary indexaddzombie" %>
 
+<div id="addzombie">
+  <h3>Add a new Zombie</h3>
 <%= form_for(Zombie.new, remote: true , :html => { :class => 'form-horizontal' } ) do |f| %>
 <div class="control-group">
   <%= f.label :name , :class => "control-label"%>
@@ -36,3 +37,5 @@
 <div class="controls">
   <%= f.submit :class => 'btn btn-primary' %></div>
 <% end %>
+
+</div>

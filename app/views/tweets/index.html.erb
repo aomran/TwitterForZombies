@@ -1,28 +1,30 @@
 <h1><%= @zombie.name.titleize%>'s tweets</h1>
-
-<table>
+<% if ! @tweets.empty? %>
+<table id="tweets" class="table table-hover">
   <tr>
     <th>Status</th>
     <th>Time</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
-<% @tweets.each do |tweet| %>
-  <tr>
-    <td><%= tweet.status %></td>
-    <td><%= time_ago_in_words tweet.created_at %> age</td>
-    <td><%= link_to 'Show', [@zombie, tweet] %></td>
-    <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet) %></td>
-    <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <%= render @tweets %>
 </table>
 
-<% if @tweets.empty? %>
-  <em>No tweets found</em>
+<% else %>
+<p> <em>No tweets found</em>
+</p>
 <% end %>
-<br />
-<%= link_to 'Back', zombies_path %>
-<%= link_to 'New Tweet', new_zombie_tweet_path %>
+
+<%= link_to 'Back', @zombie, :class => 'btn' %>
+<%= link_to 'New Tweet', new_zombie_tweet_path, :class => 'btn btn-primary indexaddtweet' %>
+
+<div id="addtweet">
+  <h3>Add a new Tweet</h3>
+  <%= form_for([@zombie, @zombie.tweets.new], remote: true, :html => { :class => 'form-inline' } ) do |f| %>
+    <%= f.label :status, "Any zombie news worth sharing?" %>
+    <%= f.text_field :status %>
+    <%= f.submit :class => 'btn btn-success btn-small' %>
+<% end %>
+  
+</div>

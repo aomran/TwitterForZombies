@@ -58,6 +58,7 @@ class TweetsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -81,8 +82,10 @@ class TweetsController < ApplicationController
     @tweet.destroy
 
     respond_to do |format|
-      format.html { redirect_to tweets_url }
+      format.html { redirect_to zombie_tweets_url }
       format.json { head :no_content }
+      format.js
     end
+
   end
 end

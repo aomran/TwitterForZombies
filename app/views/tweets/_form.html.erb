@@ -1,4 +1,4 @@
-<%= form_for([@zombie, @tweet]) do |f| %>
+<%= form_for([@zombie, @zombie.tweets.new], :html => { :class => 'form-inline' } ) do |f| %>
   <% if @tweet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
@@ -11,12 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label :status %>
     <%= f.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit :class => 'btn btn-success btn-small' %>
 <% end %>
