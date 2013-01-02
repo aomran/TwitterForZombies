@@ -68,7 +68,7 @@ class ZombiesController < ApplicationController
 
     respond_to do |format|
       if @zombie.save
-        format.html { redirect_to @zombie, notice: 'Zombie was successfully created.' }
+        format.html { redirect_to @zombie, notice: 'Thank you for signing up!' }
         format.json { render json: @zombie, status: :created, location: @zombie }
       else
         format.html { render action: "new" }

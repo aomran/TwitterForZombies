@@ -1,4 +1,5 @@
 TwitterForZombies::Application.routes.draw do
+  resources :sessions
   resources :zombies, :path => '' do 
     resources :tweets
     get :decomp, on: :member
