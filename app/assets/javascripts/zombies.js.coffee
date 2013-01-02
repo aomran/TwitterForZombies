@@ -22,7 +22,8 @@ $(document).ready ->
   		event.preventDefault()
   		$("div#addzombie").fadeToggle('fast')
 
-  	$('tr.zombie').bind( 'click', ->
-  		window.location = $(this).find('a').attr('href')
-	).hover ->
-		$(this).toggleClass 'hover'
+#caused interference with the delete button
+ #  	$('tr.zombie').bind( 'click', ->
+ #  		window.location = $(this).find('a').attr('href')
+	# ).hover ->
+	# 	$(this).toggleClass 'hover'
