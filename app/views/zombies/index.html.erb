@@ -1,6 +1,7 @@
 <h1>Listing zombies</h1>
 
 <table class="table table-hover" id="zombies">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Brain Flavor</th>
@@ -11,8 +12,11 @@
     <th></th>
     <th></th>
   </tr>
-
-  <%= render @zombies %></table>
+</thead>
+<tbody>
+  <%= render @zombies %>
+</tbody>
+</table>
 
 <%= link_to 'Add a new Zombie', new_zombie_path, :class => "btn btn-primary indexaddzombie" %>
 
