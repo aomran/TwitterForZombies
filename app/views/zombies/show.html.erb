@@ -44,20 +44,32 @@
     <b>Roles:</b>
     <%= @role_names.to_sentence %></p>
 
-  <%= link_to 'Edit', edit_zombie_path(@zombie) %>
-  |
-  <%= link_to 'Back', zombies_path %></div>
+  <%= link_to 'Edit', edit_zombie_path(@zombie), :class => 'btn' %>
+  <%= link_to 'Back', zombies_path, :class => 'btn btn-primary'%></div>
 
 <div class="span6">
   <h2>Tweets</h2>
-  <% @tweets.each do |tweet| %>
-  <p>
-    <%= link_to tweet.status, [@zombie, tweet] %></p>
+  <table class="table table-hover">
+    <% @tweets.each do |tweet| %>
+    <tr>
+      <td>
+        <%= link_to tweet.status, [@zombie, tweet] %></p>
+    </td>
+  </tr>
   <% end %>
-  <% if @tweets.empty? %> <em>No Tweets</em> <br> <%= link_to "Add a Tweet!", new_zombie_tweet_path(@zombie) %>
+  <% if @tweets.empty? %>
+  <tr>
+    <td> <em>No Tweets</em>
+      <br>
+      <%= link_to "Add a Tweet!", new_zombie_tweet_path(@zombie) %></td>
+  </tr>
   <% else %>
-  <p>
-    <%= link_to 'View all ' + pluralize(@tweets.count, 'tweet'), zombie_tweets_path(@zombie) %></p>
-  <% end %></div>
+  <tr>
+    <td>
+      <%= link_to 'View all ' + pluralize(@tweets.count, 'tweet'), zombie_tweets_path(@zombie) %></td>
+  </tr>
+  <% end %></table>
+
+</div>
 
 </div>
