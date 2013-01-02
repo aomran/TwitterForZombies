@@ -7,7 +7,8 @@ $(document).ready ->
     	event.preventDefault()
     	$('div#addtweet').fadeToggle('fast')
 
-    $("tr.tweet").bind("click", ->
-    	window.location = $(this).find('a').attr('href')
-    ).hover ->
-    	$(this).toggleClass "hover"
+    #caused interference with the delete button
+    # $("tr.tweet").bind("click", ->
+    # 	window.location = $(this).find('a').attr('href')
+    # ).hover ->
+    # 	$(this).toggleClass "hover"
