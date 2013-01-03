@@ -29,7 +29,6 @@ class Zombie < ActiveRecord::Base
   after_save :email_change_notification, if: :email_changed?
 
   private
-
   def email_change_notification
     ZombieMailer.email_change(self).deliver
   end

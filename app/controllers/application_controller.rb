@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= Zombie.find(session[:zombie_id]) if session[:zombie_id]
   end
   helper_method :current_user
+
+  def authorize
+    redirect_to login_url, alert: "Not authorized" if current_user.nil?
+  end
 end
