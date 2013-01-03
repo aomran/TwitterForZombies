@@ -1,4 +1,9 @@
 TwitterForZombies::Application.routes.draw do
+  get 'signup', to: 'zombies#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  
+  resources :sessions
   resources :zombies, :path => '' do 
     resources :tweets
     get :decomp, on: :member

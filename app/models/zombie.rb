@@ -1,4 +1,5 @@
 class Zombie < ActiveRecord::Base
+  has_secure_password
   has_one :brain, dependent: :destroy
   has_many :assignments
   has_many :tweets, dependent: :destroy
@@ -6,7 +7,9 @@ class Zombie < ActiveRecord::Base
   
   validates :age, :numericality => { :only_integer => true }
   validates :name, :presence => true
-  attr_accessible :age, :bio, :name, :email, :decomp
+  validates_uniqueness_of :email
+
+  attr_accessible :age, :bio, :name, :email, :decomp, :password, :password_confirmation
 
   scope :rotting, where(rotting: true)
   scope :fresh, where("age < 20")
