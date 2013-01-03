@@ -1,5 +1,9 @@
-<p id="notice">
-  <%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= notice %>
+  </div>
+<% end %>
 <div class="row">
   <div class="span6">
     <h2>Zombie Profile</h2>

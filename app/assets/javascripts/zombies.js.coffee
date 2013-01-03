@@ -21,7 +21,6 @@ $(document).ready ->
 	$("a.indexaddzombie").click (event) ->
   		event.preventDefault()
   		$("div#addzombie").fadeToggle('fast')
-
 #caused interference with the delete button
  #  	$('tr.zombie').bind( 'click', ->
  #  		window.location = $(this).find('a').attr('href')
