@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
   before_filter :get_zombie
   before_filter :get_tweet, :only => [:show, :edit, :update, :destroy]
-  
+  load_and_authorize_resource :zombie
+  load_and_authorize_resource :tweet, :through => :zombie
   def get_zombie
     @zombie = Zombie.find(params[:zombie_id])
   end

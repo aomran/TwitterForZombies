@@ -47,8 +47,7 @@
   <p>
     <b>Roles:</b>
     <%= @role_names.to_sentence %></p>
-
-  <%= link_to 'Edit', edit_zombie_path(@zombie), :class => 'btn' %>
+  <% if can? :update, @zombie %><%= link_to 'Edit', edit_zombie_path(@zombie), :class => 'btn' %><% end %>
   <%= link_to 'Back', zombies_path, :class => 'btn btn-primary'%></div>
 
 <div class="span6">
@@ -57,20 +56,20 @@
     <% @tweets.each do |tweet| %>
     <tr>
       <td>
-        <%= link_to tweet.status, [@zombie, tweet] %></p>
+        <%= link_to tweet.status, [@zombie, tweet] %>
     </td>
   </tr>
   <% end %>
   <% if @tweets.empty? %>
   <tr>
-    <td> <em>No Tweets</em>
-      <br>
-      <%= link_to "Add a Tweet!", new_zombie_tweet_path(@zombie) %></td>
+    <td> <em><%= link_to 'No Tweets', zombie_tweets_path(@zombie)%></em> br
+      <% if can? :manage, @zombie => Tweet %> <%= link_to 'Add a Tweet', new_zombie_tweet_path(@zombie) %><% end %>
+    </td>
   </tr>
   <% else %>
   <tr>
     <td>
-      <%= link_to 'View all ' + pluralize(@tweets.count, 'tweet'), zombie_tweets_path(@zombie) %></td>
+      <%= link_to 'View ' + pluralize(@tweets.count, 'tweet'), zombie_tweets_path(@zombie) %></td>
   </tr>
   <% end %></table>
 

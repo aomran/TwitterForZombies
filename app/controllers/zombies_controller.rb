@@ -1,6 +1,7 @@
 class ZombiesController < ApplicationController
   before_filter :get_zombie, :only => [:show, :edit, :update, :destroy, :decomp, :custom_decomp]
-
+  before_filter :authorize, :only => [:edit, :update]
+  load_and_authorize_resource
   def get_zombie
     @zombie = Zombie.find(params[:id])
   end
@@ -59,6 +60,7 @@ class ZombiesController < ApplicationController
 
   # GET /zombies/1/edit
   def edit
+    authorize! :edit, @zombie
   end
 
   # POST /zombies
