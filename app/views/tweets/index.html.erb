@@ -15,7 +15,12 @@
 <% end %>
 
 <%= link_to 'Back', @zombie, :class => 'btn' %>
-<%= link_to 'New Tweet', new_zombie_tweet_path, :class => 'btn btn-primary indexaddtweet' %>
+
+<%# @zombie => Tweet will use the :zombie => {:id => zombie.id} hash condition
+# that I defined in ability.rb %>
+<% if can? :manage, @zombie => Tweet %>
+  <%= link_to 'New Tweet', new_zombie_tweet_path, :class => 'btn btn-primary indexaddtweet' %>
+<% end %>
 
 <div id="addtweet">
   <h3>Add a new Tweet</h3>

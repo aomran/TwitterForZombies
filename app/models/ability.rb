@@ -2,8 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(zombie)
-    zombie ||= Zombie.new
-    can :manage, Zombie, :id => zombie.id
+    #zombie is the user model with a "current_user" helper method
+    zombie ||= Zombie.new #guest user(not logged in)
+    can [:read, :update, :destroy], Zombie, :id => zombie.id
+    can :create, Zombie
     can :read, Zombie
     can :manage, Tweet, :zombie => {:id => zombie.id}
     can :read, Tweet

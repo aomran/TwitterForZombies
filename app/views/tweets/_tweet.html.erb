@@ -1,6 +1,8 @@
   <tr id='tweet_<%= tweet.id %>' class='tweet'>
     <td><%= link_to tweet.status, [@zombie, tweet] %></td>
     <td><%= time_ago_in_words tweet.created_at %> age</td>
+  <% if can? :manage, tweet %>
     <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet), :class => 'btn btn-small'  %></td>
     <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete, data: { confirm: 'Are you sure?', remote: true }, :class => 'btn btn-danger btn-small' %></td>
+  <% end %>
   </tr>
