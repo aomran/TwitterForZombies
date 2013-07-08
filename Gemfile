@@ -11,6 +11,7 @@ group :development do
   gem 'rb-fsevent'
   gem 'guard-livereload'
   gem 'thin'
+  gem 'foreman'
 end
 # Gems used only for assets and not required
 # in production environments by default.

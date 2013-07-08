@@ -5,7 +5,7 @@
     <td><%= zombie.age %></td>
     <td><%= zombie.email %></td>
     <td><%= link_to pluralize(zombie.tweets.count, 'tweet'), zombie_tweets_path(zombie) %></td>
-<% if can? :manage, zombie %>
+<% if can?(:update, zombie) && can?(:destroy, zombie) %>
     <td><%= link_to 'Edit', edit_zombie_path(zombie), :class => 'btn btn-small' %></td>
     <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?', remote: true }, :class => 'btn btn-danger btn-small' %></td>
 <% else %>
